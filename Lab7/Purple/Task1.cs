@@ -111,17 +111,19 @@ namespace Lab7.Purple
             {
                 if (array == null || array.Length <= 1)
                     return;
-                
-                for (int i = 0; i < array.Length - 1; i++)
+                int i = 1;
+                int j = 2;
+                while(i < array.Length)
                 {
-                    for (int j = 0; j < array.Length - 1 - i; j++)
+                    if (i == 0 || array[i].TotalScore <= array[i - 1].TotalScore)
                     {
-                        if (array[j].TotalScore < array[j + 1].TotalScore)
-                        {
-                            Participant temp = array[j];
-                            array[j] = array[j + 1];
-                            array[j + 1] = temp;
-                        }
+                        i = j;
+                        j++;
+                    }
+                    else
+                    {
+                        (array[i], array[i - 1]) = (array[i - 1], array[i]);
+                        i--;
                     }
                 }
             }
