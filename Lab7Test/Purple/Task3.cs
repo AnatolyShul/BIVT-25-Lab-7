@@ -181,4 +181,3 @@ namespace Lab7Test.Purple
        }
    }
 }
-
