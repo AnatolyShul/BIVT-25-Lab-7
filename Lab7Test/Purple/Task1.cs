@@ -1,38 +1,38 @@
-﻿//using System;
-//using System.IO;
-//using System.Linq;
-//using System.Reflection;
-//using System.Text.Json;
+﻿using System;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text.Json;
 
-//namespace Lab7Test.Purple
-//{
-//    [TestClass]
-//    public sealed class Task1
-//    {
-//        record InputRow(string Name, string Surname, double[] Coefs, int[][] Marks);
-//        record OutputRow(string Name, string Surname, double TotalScore);
+namespace Lab7Test.Purple
+{
+   [TestClass]
+   public sealed class Task1
+   {
+       record InputRow(string Name, string Surname, double[] Coefs, int[][] Marks);
+       record OutputRow(string Name, string Surname, double TotalScore);
 
-//        private InputRow[] _input;
-//        private OutputRow[] _output;
-//        private Lab7.Purple.Task1.Participant[] _participant;
+       private InputRow[] _input;
+       private OutputRow[] _output;
+       private Lab7.Purple.Task1.Participant[] _participant;
 
-//        [TestInitialize]
-//        public void LoadData()
-//        {
-//            var folder = Directory.GetParent(Directory.GetCurrentDirectory())
-//                                  .Parent.Parent.Parent.FullName;
-//            folder = Path.Combine(folder, "Lab7Test", "Purple");
+       [TestInitialize]
+       public void LoadData()
+       {
+           var folder = Directory.GetParent(Directory.GetCurrentDirectory())
+                                 .Parent.Parent.Parent.FullName;
+           folder = Path.Combine(folder, "Lab7Test", "Purple");
 
-//            var inputJson = JsonSerializer.Deserialize<JsonElement>(
-//                File.ReadAllText(Path.Combine(folder, "input.json")))!;
-//            var outputJson = JsonSerializer.Deserialize<JsonElement>(
-//                File.ReadAllText(Path.Combine(folder, "output.json")))!;
+           var inputJson = JsonSerializer.Deserialize<JsonElement>(
+               File.ReadAllText(Path.Combine(folder, "input.json")))!;
+           var outputJson = JsonSerializer.Deserialize<JsonElement>(
+               File.ReadAllText(Path.Combine(folder, "output.json")))!;
 
-//            _input = inputJson.GetProperty("Task1").Deserialize<InputRow[]>()!;
-//            _output = outputJson.GetProperty("Task1").Deserialize<OutputRow[]>()!;
+           _input = inputJson.GetProperty("Task1").Deserialize<InputRow[]>()!;
+           _output = outputJson.GetProperty("Task1").Deserialize<OutputRow[]>()!;
 
-//            _participant = new Lab7.Purple.Task1.Participant[_input.Length];
-//        }
+           _participant = new Lab7.Purple.Task1.Participant[_input.Length];
+       }
 
 //        [TestMethod]
 //        public void Test_00_OOP()
@@ -191,3 +191,4 @@
 //        }
 //    }
 //}
+
